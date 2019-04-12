@@ -1,3 +1,6 @@
+IF EXISTS(SELECT * FROM sys.databases where name = 'Library_test')
+DROP DATABASE Library_test;
+
 CREATE DATABASE Library_test;
 
 use Library_test;
@@ -14,7 +17,6 @@ create table Book(
 	name nvarchar(50) not null,
 	publication_date date,
 	publisher_id int,
-	status bit,
 	primary key(id),
 
 	CONSTRAINT FK_BOOK_PUBLISHER FOREIGN KEY (publisher_id)
@@ -43,11 +45,13 @@ create table Book_Authors(
 );
 
 create table Book_Catalog(
-	book_id_catalog int not null identity(1,1),
-	book_id int UNIQUE,
+	book_id int,
+	book_name nvarchar(50),
+	book_id_catalog int not null,
 	place nvarchar(50),
+	status bit,
 	amount int,
-
+	primary key(book_id_catalog),
 	constraint FK_Book_Catalog_Book foreign key (book_id)
 	references Book (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	
@@ -69,9 +73,11 @@ create table Book_Borrow(
 	borrow_date date,
 	return_date date,
 	period int,
-
+	primary key(book_id,user_id,borrow_date),
+	
 	constraint FK_Book_Borrow_User foreign key (user_id)
 	references [User] (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	constraint FK_Borrow_Book_Book_Catalog foreign key(book_id)
-	references Book_Catalog (book_id) ON DELETE NO ACTION ON UPDATE NO ACTION
+	references Book_Catalog (book_id_catalog) ON DELETE NO ACTION ON UPDATE NO ACTION
 )
+
