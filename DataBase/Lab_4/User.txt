@@ -1,0 +1,5 @@
+,'Nikita','Ivanov',0982525255,'Lviv'
+,'Ivan','Trust',0962125355,'Lviv'
+,'Vova','Kombain',0952525255,'Kyiv'
+,'Nikita','Rusas',0942524255,'Rivne'
+,'Oleg','Hasmanov',0932125255,'Kyiv'

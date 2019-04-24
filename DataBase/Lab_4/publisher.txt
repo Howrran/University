@@ -1,0 +1,6 @@
+,'Avrora','Lviv'
+,'Maxe','Kyiv'
+,'Hasnella','Odesa'
+,'Latosha','Lviv'
+,'Sandra','Rivne'
+,'Karnel','Kyiv'
