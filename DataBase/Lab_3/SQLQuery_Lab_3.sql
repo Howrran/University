@@ -1,4 +1,4 @@
-use Library_test;
+use Library;
 
 Alter table Test_3
 	drop FK_Test1_Test3
