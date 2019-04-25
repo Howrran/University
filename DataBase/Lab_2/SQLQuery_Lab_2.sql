@@ -1,9 +1,9 @@
-IF EXISTS(SELECT * FROM sys.databases where name = 'Library_test')
-DROP DATABASE Library_test;
+--IF EXISTS(SELECT * FROM sys.databases where name = 'Library')
+--	DROP DATABASE Library;
 
-CREATE DATABASE Library_test;
+--CREATE DATABASE Library;
 
-use Library_test;
+use Library;
 
 create table Publisher(
 	id int not null identity(1,1),
@@ -27,15 +27,16 @@ create table Author(
 	id int not null identity(1,1),
 	name nvarchar(50),
 	surname nvarchar(50),
-	fullname nvarchar(100)
 
 	primary key(id)
 );
 
 create table Book_Authors(
-	book_id int,
-	author_id int,
+	book_id int not null,
+	author_id int not null,
 	genre nvarchar(50),
+
+	Primary key(book_id,author_id),
 
 	constraint FK_Book_Authors_Book foreign key(book_id)
 	references Book(id) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -61,7 +62,6 @@ create table [User](
 	id int not null identity(1,1),
 	name nvarchar(50),
 	surname nvarchar(50),
-	full_name nvarchar(50),
 	phone_number int,
 	adress nvarchar(50),
 	primary key (id)		
