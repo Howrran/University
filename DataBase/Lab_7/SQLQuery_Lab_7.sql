@@ -13,3 +13,14 @@ use Library;
 
 --select * from Publisher left join Book on Publisher.id = Book.publisher_id
 
+--select user_id, sum (period) from Book_Borrow
+--group by user_id
+
+--select [User].name, [User].surname,[User].phone_number, Book_Borrow.return_date, Book_Catalog.book_id_catalog, Book_Catalog.status, Book.name
+--from Book_Borrow 
+--inner join Book_Catalog on (Book_Catalog.book_id_catalog = Book_Borrow.book_id)
+--inner join [User] on ([User].id = Book_Borrow.user_id)	
+--inner join Book on Book_Catalog.book_id = Book.id
+
+
+
